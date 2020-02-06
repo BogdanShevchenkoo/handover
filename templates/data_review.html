@@ -1,0 +1,33 @@
+{% extends "template.html" %}
+{% block content %}
+{% from "_macro.html" import render_field %}
+
+  <h3>Enter patient details for {{ team.teamName }}</h3>
+<br>
+        <form class="form" action="{{ url_for('reviewTeamData', team_id = team.id) }}" method="post">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Background</th>
+                    <th>Issues</th>
+                    <th>Plan</th>
+                    <th>Jobs</th>
+                    <th>Review By</th>
+                    <th>Review Reason</th>
+                </tr>
+                {% for patient in form.patients|sort(attribute='reviewBy.data') %}
+                <tr data-toggle="fieldset-entry">
+                    <td>{{ patient.patientName.data }}{{ patient.patientName }}</td>
+                    <td>{{ patient.background(cols="25", rows="6") }}</td>
+                    <td>{{ patient.issues(cols="25", rows="6") }}</td>
+                    <td>{{ patient.plan(cols="25", rows="6") }}</td>
+                    <td>{{ patient.jobs(cols="25", rows="6") }}</td>
+                    <td>{{ patient.reviewBy }}</td>
+                    <td>{{ patient.reviewReason }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        <p><p><input class="button-primary" type="submit" value="Submit"></p></p>
+      </form>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "template.html" %}
+{% block content %}
+{% from "_macro.html" import render_field %}
+
+  <h3>Geriatrics Handover</h3>
+  <hr>
+      <div class="container">
+        <div class="row">
+<!-- For initial import of data, creation of new team, or to 
+  update a list with new patients and remove those who are 
+  not included in the new lost  -->
+          <div class="six columns">
+                  <h5>Refresh patient list</h5>  
+            <form class="form-inline" action="{{ url_for('index') }}" method="post">
+              {{ create_form.csrf_token }}
+              <p>
+              <p>
+              {{ render_field(create_form.teamSelect, with_label=true) }}
+              {{ render_field(create_form.teamSubmit, with_label=true) }}
+
+              </p>
+              <p><input class="button-primary" type="submit" value="Submit"></p>
+            </form>
+          </div>
+<!-- Update the list by adding new patients to the team -->
+          <div class="six columns">
+                  <h5>Add new patients to list</h5>
+            <form class="form-inline" action="{{ url_for('addNewTeamDataFromIndex') }}" method="post">
+              {{ submit_form.csrf_token }}
+              <p>
+              <p>
+              {{ render_field(submit_form.teamSelect, with_label=true) }}
+              </p>
+              <p><input class="button-primary" type="submit" value="Go!"></p>
+            </form>
+          </div>
+        </div>
+
+        <hr>
+<!-- Edits patient data for a team -->        
+        <div class="row">
+          <div class="six columns">
+                  <h5>Edit your list details</h5>  
+            <form class="form-inline" action="{{ url_for('reviewTeamDataFromIndex') }}" method="post">
+              {{ submit_form.csrf_token }}
+              <p>
+              <p>
+              {{ render_field(submit_form.teamSelect, with_label=true) }}
+              </p>
+              <p><input class="button-primary" type="submit" value="Go!"></p>
+            </form>
+          </div>
+<!-- View complete list -->
+          <div class="six columns">
+          <p>
+            <a class="button button-primary" href="{{ url_for('viewList') }}">View Complete List</a>
+          </p>
+          <hr>
+<!-- return a list just belonging to a consultant -->
+          <h5>Return a list by Consultant</h5>  
+            <form class="form-inline" action="{{ url_for('redirectConsultantList') }}" method="post">
+              {{ consultant_form.csrf_token }}
+              <p>
+              <p>
+              {{ render_field(consultant_form.consultantSelect, with_label=true) }}
+              </p>
+              <p><input class="button-primary" type="submit" value="Go!"></p>
+            </form>
+            <hr>
+
+<!-- reutn a list just belonging to a team -->
+          <h5>Return a list by Team</h5>  
+            <form class="form-inline" action="{{ url_for('redirectTeamList') }}" method="post">
+              {{ submit_form.csrf_token }}
+              <p>
+              <p>
+              {{ render_field(submit_form.teamSelect, with_label=true) }}
+              </p>
+              <p><input class="button-primary" type="submit" value="Go!"></p>
+            </form>
+
+          </div>
+        </div>
+        
+
+
+
+  </div>
+
+
+  <br>
+  <br>
+  <div>
+{% endblock %}
