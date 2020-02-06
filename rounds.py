@@ -222,7 +222,7 @@ def addData(data, team_id, skipDelete):
     import csv
     mrnList = [] # collect a list of the patients
     for line in csv.reader(inputIO, delimiter='\t'):
-        print line
+        
         patient = db.session.query(DataTable).filter_by(mrn=line[4]).first()
         if patient:
             # The following if consultant and if statement are
@@ -246,7 +246,7 @@ def addData(data, team_id, skipDelete):
             # patient.attending = line[5]
             patient.location = line[3]
             patient.team_id = team_id
-            print 'updated ' + patient.patientName
+            
         else:
             # if the patient doesn't exist then it will add it
             # Order is(team_id, patientName, mrn, los, age, admissionReason, attending, location)
@@ -265,7 +265,7 @@ def addData(data, team_id, skipDelete):
             new_patient = DataTable(team_id, consultant.id, line[2], line[4], line[9], line[6], line[10], line[3])            
             db.session.add(new_patient)
             db.session.commit()
-            print 'added ' + new_patient.patientName
+            
         # now delete all records for the team that are not in MRNList,
         # but only if it is called from submitTeamData
     pdb.set_trace()
@@ -276,6 +276,6 @@ def addData(data, team_id, skipDelete):
                 mrnList.index(patient.mrn)
             except ValueError:
                 db.session.delete(patient)
-                print 'deleted ' + patient.patientName
+                
                 db.session.commit()
 
