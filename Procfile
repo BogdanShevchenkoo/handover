@@ -1,1 +1,1 @@
-web: python run.py
+web: gunicorn src.rounds:app --log-file=-
