@@ -5,7 +5,7 @@ Flask-WTF==0.10.1
 Jinja2==2.7.3
 gunicorn
 MarkupSafe==0.23
-Pillow==2.8.2
+Pillow==6.2.0
 PyPDF2==1.24
 Pyphen==0.9.1
 SQLAlchemy==1.0.5
