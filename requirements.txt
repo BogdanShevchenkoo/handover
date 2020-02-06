@@ -22,5 +22,5 @@ pytz==2014.4
 reportlab==3.2.0
 six==1.9.0
 tinycss==0.3
-wsgiref==0.1.2
+wsgiref
 xhtml2pdf==0.0.6
