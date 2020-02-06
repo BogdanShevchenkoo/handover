@@ -34,7 +34,7 @@ from forms import TeamSelectSubmitForm, ConsultantSelectForm, TeamSelectForm, Im
 
 
 from xhtml2pdf import pisa
-from StringIO import StringIO
+from io import StringIO
 
 def create_pdf(pdf_data):
     pdf = StringIO()
