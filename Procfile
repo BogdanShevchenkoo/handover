@@ -1,1 +1,1 @@
-web: gunicorn src.rounds:app --log-file=-
+web: gunicorn rounds:app
