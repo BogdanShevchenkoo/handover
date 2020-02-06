@@ -1,5 +1,5 @@
 CairoSVG==1.0.14
-Flask==0.10.1
+Flask==1.0
 Flask-SQLAlchemy==2.0
 Flask-WTF==0.10.1
 Jinja2==2.7.3
