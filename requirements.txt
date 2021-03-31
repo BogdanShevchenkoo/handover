@@ -17,7 +17,7 @@ cffi==1.1.2
 cssselect==0.9.1
 html5lib==0.99999
 itsdangerous==0.24
-lxml==3.4.4
+lxml==4.6.3
 pycparser==2.14
 pytz==2014.4
 reportlab==3.2.0
